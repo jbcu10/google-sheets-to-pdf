@@ -22,6 +22,7 @@ out
 .idea/misc.xml
 .idea/workspace.xml
   out/
- src/main/resources/
+src/main/resources/credentials.json
+src/main/resources/credentials-drive.json
 test.pdf
 tokens/

@@ -1,3 +1,4 @@
+import com.github.javafaker.Faker;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -18,10 +19,7 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.*;
 import java.security.GeneralSecurityException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     private static final String APPLICATION_NAME = "Google Sheets API Java Quickstart";
@@ -69,11 +67,12 @@ public class Application {
     
     private static void updateDocs(Sheets sheets,   String spreadsheetId, String valueInputOption) throws IOException {
         List<ValueRange> data = new ArrayList<>();
-        for (int a=2;a<12;a++) {
+        Faker faker = new Faker(Locale.US);
+        for (int a=22;a<9000;a++) {
             data.add(new ValueRange()
                     .setRange("A"+a)
                     .setValues(Arrays.asList(
-                            Arrays.asList("TEST"+a, "TEST", "TEST", "TEST", "TEST", "TEST"))));
+                            Arrays.asList(faker.name().fullName(), faker.demographic().sex(), faker.company().profession(),faker.cat().name(),faker.book().genre(),  faker.avatar().image()))));
         }
 
 
